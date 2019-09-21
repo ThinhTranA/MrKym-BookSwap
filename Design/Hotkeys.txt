@@ -1,0 +1,23 @@
+More info:
+https://www.youtube.com/watch?v=aUk5Jtvmx8Q&t=13422s
+
+	Draw circle
+Shift : maintain aspect
+Alt: change aspect
+21:20
+
+	Remove part of the circle:
+Select circle, Right click, Path/Convert to part, then
+Use Pen tool to break Cirle apart
+Tips, can Roa bit to select start point.
+21:45
+
+
+Trick with Adobe XD when pasting large aspect image:
+* Draw a rectangle first, then RightClick/PasteApperance the image on the reactangle
+
+SVG Image resize:
+hold Shift to avoid distortion
+
+
+Select all icons/images click export batch to export all in one go.
