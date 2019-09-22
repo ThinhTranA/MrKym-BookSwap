@@ -6,7 +6,9 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:rainbows="clr-namespace:Xamarin.Forms.DebugRainbows;assembly=Xamarin.Forms.DebugRainbows"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:viewmodel="clr-namespace:BookSwap.ViewModels"
+    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
     mc:Ignorable="d">
 
     <!--  Do binding context in here give strong type and intellisense for xaml  -->
@@ -32,7 +34,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
+            <RowDefinition Height="80" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -43,8 +45,13 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <BoxView Grid.ColumnSpan="3" Color="#FFF571" />
-            <Image Margin="10" Source="book_extremelyloud" />
+            <skia:SKCanvasView PaintSurface="SKCanvasView_PaintSurface" Grid.ColumnSpan="3" />
+            <pancake:PancakeView
+                Margin="10"
+                HasShadow="True"
+                Elevation="10">
+                <Image Source="book_extremelyloud" />
+            </pancake:PancakeView>
             <StackLayout Grid.Column="1">
                 <Label
                     Text="YOUR BOOK"
@@ -75,18 +82,21 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid BackgroundColor="{Binding AccentColor}" rainbows:DebugRainbow.IsDebug="True">
+                        <Grid BackgroundColor="{Binding AccentColor}" rainbows:DebugRainbow.IsDebug="False">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <StackLayout>
-                                <Label FontAttributes="Bold" Text="{Binding Title}" />
+                            <StackLayout Margin="20" VerticalOptions="Center">
+                                <Label
+                                    FontAttributes="Bold"
+                                    Text="{Binding Title}"
+                                    FontSize="20" />
                                 <Label Text="{Binding Author}" />
                             </StackLayout>
 
@@ -99,14 +109,27 @@
                                 VerticalOptions="Center"
                                 Orientation="Horizontal">
                                 <BoxView
-                                    Color="Red"
+                                    BackgroundColor="Blue"
                                     HorizontalOptions="Start"
                                     VerticalOptions="Start"
-                                    WidthRequest="20"
-                                    HeightRequest="20"
-                                    CornerRadius="10" />
+                                    WidthRequest="40"
+                                    HeightRequest="40"
+                                    CornerRadius="20" />
                                 <Label Text="ERNEST SOMEBODY" VerticalOptions="Center" />
                             </StackLayout>
+
+                            <pancake:PancakeView
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                Margin="20"
+                                HasShadow="True"
+                                Elevation="10"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center">
+                                <Image Source="{Binding CoverImage}" />
+                            </pancake:PancakeView>
+
+
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
