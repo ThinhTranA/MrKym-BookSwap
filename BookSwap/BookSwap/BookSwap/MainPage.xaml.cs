@@ -45,7 +45,8 @@ namespace BookSwap
 
         private void Eff_ScrollChanged(object sender, ScrollEventArgs args)
         {
-            Debug.WriteLine($"Scroll Postion {args.Y}");
+            // send a message to the cell that the scroll position has changes
+            MessagingCenter.Send<ScrollMessage, double>(new ScrollMessage(), ScrollMessage.ScrollChanged, args.Y);
         }
 
         private void SKCanvasView_PaintSurface(object sender, SkiaSharp.Views.Forms.SKPaintSurfaceEventArgs args)

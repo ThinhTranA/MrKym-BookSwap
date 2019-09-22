@@ -75,9 +75,12 @@
                 VerticalOptions="Start" />
         </Grid>
 
+        <!--https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/listview/performance-->
+        <!--Use RecycleElement, because we only want as few viewcell listening to MessagingCenter as possible-->
         <ListView
             x:Name="BooksListView"
             Grid.Row="1"
+            CachingStrategy="RecycleElement"
             ItemsSource="{Binding Books}"
             RowHeight="200"
             SeparatorVisibility="None">

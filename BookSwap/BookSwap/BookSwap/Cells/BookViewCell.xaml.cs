@@ -22,9 +22,25 @@ namespace BookSwap.Cells
         SKPaint _accentPaint;
         SKPaint _accentDarkPaint;
         SKPaint _accentExtraDarkPaint;
+
+        double scrollValue;
+        IViewLocationFetcher viewLocatorFetcher;
         public BookViewCell()
         {
             InitializeComponent();
+
+            MessagingCenter.Subscribe<ScrollMessage, double>(this, ScrollMessage.ScrollChanged,
+                (sender, scrollInfo) =>
+                {
+                    // store away the scroll value (here is Y position)
+                    scrollValue = scrollInfo;
+
+                    //tell the cell to redraw
+                    if(CellBackGroundCanvas != null)
+                        CellBackGroundCanvas.InvalidateSurface();
+                });
+
+            viewLocatorFetcher = DependencyService.Get<IViewLocationFetcher>();
         }
         //Each cell will/might have different accent color
         //So need to get it from from BindingContext
@@ -54,25 +70,26 @@ namespace BookSwap.Cells
 
             canvas.Clear();
 
+            //work out where the cell is on the page, using this cell postion, we can adjust the angle
+            var thisCellPosition = viewLocatorFetcher.GetCoordinates(this.View);
+
             //Fill in the whole grid space
             canvas.DrawRect(info.Rect, _accentPaint);
 
             // create path for dark color  AccentDarkPaint, dispose path when done.
             using (SKPath path = new SKPath())
             {
-                //Assume drawing in a 10 by 10 coordinate system.
-                path.MoveTo(0, 0);                          //Start at point (0,0)
-                path.LineTo(info.Width * .7f, 0);           //Line from (0,0) to (0,7) ,Draw to the right to 70 % width of the rectangle(cell)
-                path.LineTo(info.Width * .2f, info.Height); //Draw from point (0,7) to (2,10)
-                path.LineTo(0, info.Height);                //Draw from point (2,10) to (0,10)
-                path.Close();                               //Close the path, it knows to draw from 0,10 to 0,0
-                canvas.DrawPath(path, _accentDarkPaint);    //Draw and fill path with accent dark paint color.
+                path.MoveTo(0, 0);                          
+                path.LineTo(info.Width - thisCellPosition.Y, 0);     //As scroll move up and down, adjust the angle of this, canvas being redrawn each time scroll through messingcenter      
+                path.LineTo(0, info.Height *.8f);                
+                path.Close();                               
+                canvas.DrawPath(path, _accentDarkPaint);    
             }
             //Similarly, create path for Extra Dark color  AccentExtraDarkPaint 
             using (SKPath path = new SKPath())
             {
                 path.MoveTo(0, 0);
-                path.LineTo(info.Width * .33f, 0);
+                path.LineTo(info.Width - thisCellPosition.Y * 2f, 0);
                 path.LineTo(0, info.Height * .6f);
                 path.Close();
                 canvas.DrawPath(path, _accentExtraDarkPaint);
