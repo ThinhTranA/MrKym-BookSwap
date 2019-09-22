@@ -3,10 +3,12 @@ using SkiaSharp.Views.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using XFUtils.Effects;
 
 namespace BookSwap
 {
@@ -35,6 +37,15 @@ namespace BookSwap
             _accentPaint = new SKPaint() { Color = _accentColor };
             _accentDarkPaint = new SKPaint() { Color = _accentDarkColor };
             _accentExtraDarkPaint = new SKPaint() { Color = _accentExtraDarkColor };
+
+            var eff = new XFUtils.Effects.ScrollReporterEffect();
+            eff.ScrollChanged += Eff_ScrollChanged;    //attach this effect to listview to get the Y position of the scroll
+            BooksListView.Effects.Add(eff);
+        }
+
+        private void Eff_ScrollChanged(object sender, ScrollEventArgs args)
+        {
+            Debug.WriteLine($"Scroll Postion {args.Y}");
         }
 
         private void SKCanvasView_PaintSurface(object sender, SkiaSharp.Views.Forms.SKPaintSurfaceEventArgs args)

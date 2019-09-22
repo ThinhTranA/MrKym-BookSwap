@@ -37,8 +37,8 @@ namespace BookSwap.Cells
                 Color color = Color.FromHex( ((Book)BindingContext).AccentColor);  //BindingContext should be a Book ojbect, since this is inside a Listview
 
                 _accentColor = color.ToSKColor();
-                _accentDarkColor = color.WithLuminosity(color.Luminosity - .2).ToSKColor();    //Darken the color (Luminosity goes from 0 to 1, default is 1)
-                _accentExtraDarkColor = color.WithLuminosity(color.Luminosity - .25).ToSKColor(); //Even darker 
+                _accentDarkColor = color.WithLuminosity(color.Luminosity - .07).ToSKColor();    //Darken the color (Luminosity goes from 0 to 1, default is 1)
+                _accentExtraDarkColor = color.WithLuminosity(color.Luminosity - .15).ToSKColor(); //Even darker 
 
                 _accentPaint = new SKPaint() { Color = _accentColor };
                 _accentDarkPaint = new SKPaint() { Color = _accentDarkColor };

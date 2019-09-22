@@ -16,6 +16,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="Xamarin.Forms.DebugRainbows" Version="1.0.16" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.2.1" />
+    <PackageReference Include="XFUtils" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
