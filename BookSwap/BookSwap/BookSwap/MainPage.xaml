@@ -83,6 +83,7 @@
             CachingStrategy="RecycleElement"
             ItemsSource="{Binding Books}"
             RowHeight="200"
+            ItemTapped="BooksListView_ItemTapped"
             SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>

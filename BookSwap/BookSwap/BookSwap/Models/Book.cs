@@ -12,30 +12,43 @@ namespace BookSwap.Models
         private string _title;
         private string _author;
         private string _coverImage;
-        private string _accentColor;
+        private ColorValues _colors;
+        private string _userImage;
+        private string _userName;
 
         public string Title
         {
-            get => _title;
-            set => SetProperty<string>(ref _title, value);
+            get { return _title; }
+            set { SetProperty<string>(ref _title, value); }
         }
 
         public string Author
         {
-            get => _author;
-            set => SetProperty<string>(ref _author, value);
+            get { return _author; }
+            set { SetProperty<string>(ref _author, value); }
         }
 
         public string CoverImage
         {
-            get => _coverImage;
-            set => SetProperty<string>(ref _coverImage, value);
+            get { return _coverImage; }
+            set { SetProperty<string>(ref _coverImage, value); }
+        }
+        public ColorValues Colors
+        {
+            get { return _colors; }
+            set { SetProperty<ColorValues>(ref _colors, value); }
+        }
+        public string UserImage
+        {
+            get { return _userImage; }
+            set { SetProperty<string>(ref _userImage, value); }
+        }
+        public string UserName
+        {
+            get { return _userName; }
+            set { SetProperty<string>(ref _userName, value); }
         }
 
-        public string AccentColor
-        {
-            get => _accentColor;
-            set => SetProperty<string>(ref _accentColor, value);
-        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookSwap.ViewModels;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -6,6 +7,7 @@ namespace BookSwap
 {
     public partial class App : Application
     {
+        public static BooksViewModel MainViewModel = new BooksViewModel();
         public App()
         {
             InitializeComponent();
