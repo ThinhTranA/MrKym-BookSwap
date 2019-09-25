@@ -1,5 +1,6 @@
 ﻿using BookSwap.Models;
 using BookSwap.ViewModels;
+using Plugin.SharedTransitions;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
@@ -91,6 +92,8 @@ namespace BookSwap
         {
             //set the selected book
             ((BooksViewModel)BindingContext).SelectedBook = e.Item as Book;
+            SharedTransitionNavigationPage.SetTransitionSelectedGroup(this,
+                ((BooksViewModel)BindingContext).SelectedBook.Title);
             await Navigation.PushAsync(new SwapDetails());
         }
     }

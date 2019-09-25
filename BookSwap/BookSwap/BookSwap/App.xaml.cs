@@ -1,4 +1,5 @@
 ﻿using BookSwap.ViewModels;
+using Plugin.SharedTransitions;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,7 +13,7 @@ namespace BookSwap
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage( new MainPage());
+            MainPage = new SharedTransitionNavigationPage( new MainPage());
         }
 
         protected override void OnStart()

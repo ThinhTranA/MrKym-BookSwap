@@ -58,8 +58,8 @@ namespace BookSwap
             {
                 path.MoveTo(0, 0);
                 path.LineTo(info.Width, 0);
-                path.LineTo(info.Width,(info.Height / 2) * .9f - (float)_colorAngleAnim);   //move up on the right side
-                path.LineTo(0, (info.Height / 2) * .9f + (float)_colorAngleAnim);  //move down on the left side
+                path.LineTo(info.Width,(info.Height / 2) - (float)_colorAngleAnim);   //move up on the right side
+                path.LineTo(0, (info.Height / 2) + (float)_colorAngleAnim);  //move down on the left side
                 path.Close();
 
                 canvas.DrawPath(path, _accentFromPaint);

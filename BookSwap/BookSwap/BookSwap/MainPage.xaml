@@ -8,9 +8,9 @@
     xmlns:rainbows="clr-namespace:Xamarin.Forms.DebugRainbows;assembly=Xamarin.Forms.DebugRainbows"
     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:viewmodel="clr-namespace:BookSwap.ViewModels"
-    xmlns:cells ="clr-namespace:BookSwap.Cells"
+    xmlns:cells="clr-namespace:BookSwap.Cells"
     xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
-
+    xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
     mc:Ignorable="d">
 
     <!--  Do binding context in here give strong type and intellisense for xaml  -->
@@ -71,12 +71,14 @@
             <Image
                 Source="pencil"
                 Margin="0,20,20,0"
+                sharedTransitions:Transition.Name="FromCoverImage"
+                sharedTransitions:Transition.Group="{Binding SelectedBook.Title}"
                 Grid.Column="2"
                 VerticalOptions="Start" />
         </Grid>
 
-        <!--https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/listview/performance-->
-        <!--Use RecycleElement, because we only want as few viewcell listening to MessagingCenter as possible-->
+        <!--  https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/listview/performance  -->
+        <!--  Use RecycleElement, because we only want as few viewcell listening to MessagingCenter as possible  -->
         <ListView
             x:Name="BooksListView"
             Grid.Row="1"
@@ -87,7 +89,7 @@
             SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <cells:BookViewCell/>
+                    <cells:BookViewCell />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

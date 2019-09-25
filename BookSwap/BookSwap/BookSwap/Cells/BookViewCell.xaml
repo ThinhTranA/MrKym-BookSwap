@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
     mc:Ignorable="d">
     <ViewCell.View>
 
@@ -56,6 +57,8 @@
                         HorizontalOptions="Start"
                         Source="{Binding UserImage}"
                         VerticalOptions="Start"
+                        sharedTransitions:Transition.Name="ToCoverImage"
+                        sharedTransitions:Transition.Group="{Binding SelectedBook.Title}"
                         WidthRequest="40" />
                 </pancake:PancakeView>
 

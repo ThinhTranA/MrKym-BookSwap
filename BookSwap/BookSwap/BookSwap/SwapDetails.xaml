@@ -6,6 +6,7 @@
     xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
     mc:Ignorable="d"
     x:Class="BookSwap.SwapDetails">
     <ContentPage.Content>
@@ -51,6 +52,8 @@
                     Aspect="AspectFit"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
+                    sharedTransitions:Transition.Name="FromCoverImage"
+                    sharedTransitions:Transition.Group="{Binding SelectedBook.Title}"
                     Grid.Column="0"
                     Source="{Binding SwapFromBook.CoverImage}" />
 
@@ -85,8 +88,98 @@
                 </Grid>
             </Grid>
 
+            <!--  swap banner  -->
+            <pancake:PancakeView
+                Grid.Row="1"
+                BackgroundColor="White"
+                Elevation="2"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                HeightRequest="50"
+                CornerRadius="25"
+                WidthRequest="200">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-            <Image Grid.Row="2" Source="{Binding SelectedBook.CoverImage}" />
+                    <Label
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Text="SWAP"
+                        FontAttributes="Bold" />
+                </Grid>
+            </pancake:PancakeView>
+
+            <!--  swap to book  -->
+            <Grid
+                Margin="10,0,10,20"
+                VerticalOptions="End"
+                Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <BoxView
+                    Grid.RowSpan="2"
+                    Grid.Column="1"
+                    HeightRequest="218"
+                    WidthRequest="153"
+                    Opacity=".5"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Color="{Binding SelectedBook.Colors.TitleColor}" />
+                <Image
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Grid.Column="1"
+                    WidthRequest="133"
+                    HeightRequest="198"
+                    Aspect="AspectFit"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    sharedTransitions:Transition.Name="ToCoverImage"
+                    sharedTransitions:Transition.Group="{Binding SelectedBook.Title}"
+                    Source="{Binding SelectedBook.CoverImage}" />
+
+                <StackLayout Grid.Column="0" Margin="10,0,0,0">
+                    <Label
+                        Text="{Binding SelectedBook.Title}"
+                        TextColor="{Binding SelectedBook.Colors.TitleColor}"
+                        FontAttributes="Bold"
+                        FontSize="18" />
+                    <Label
+                        Text="{Binding SelectedBook.Author}"
+                        TextColor="{Binding SelectedBook.Colors.TitleColor}"
+                        FontSize="14" />
+                </StackLayout>
+
+                <Grid
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Margin="0,0,0,20">
+
+                    <pancake:PancakeView
+                        Elevation="2"
+                        Opacity=".5"
+                        HasShadow="True">
+                        <BoxView Color="White" />
+                    </pancake:PancakeView>
+                    <Label
+                        Margin="10"
+                        VerticalOptions="Center"
+                        MaxLines="4"
+                        Text="Something tsomethingSomething tsomethingSomething tsomethingSomething tsomethingSomething tsomething" />
+                </Grid>
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
