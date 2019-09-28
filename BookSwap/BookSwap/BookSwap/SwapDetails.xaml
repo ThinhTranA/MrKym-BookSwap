@@ -79,12 +79,13 @@
 
                     <pancake:PancakeView
                         Elevation="2"
-                        x:Name="DecscriptionBackground"
+                        x:Name="DescriptionBackground"
                         Opacity=".5"
                         HasShadow="True">
                         <BoxView Color="White" />
                     </pancake:PancakeView>
                     <Label
+                        x:Name="DescriptionText"
                         Margin="10"
                         VerticalOptions="Center"
                         MaxLines="4"

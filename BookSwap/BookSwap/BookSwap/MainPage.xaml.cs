@@ -92,6 +92,7 @@ namespace BookSwap
         {
             //set the selected book
             ((BooksViewModel)BindingContext).SelectedBook = e.Item as Book;
+            SharedTransitionNavigationPage.SetTransitionDuration(this, 100);
             SharedTransitionNavigationPage.SetTransitionSelectedGroup(this,
                 ((BooksViewModel)BindingContext).SelectedBook.Title);
             await Navigation.PushAsync(new SwapDetails());
