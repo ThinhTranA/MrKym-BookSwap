@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -109,7 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BookSwap\BookSwap.csproj">
-      <Project>{79EF2EDE-3E7D-42D4-913F-394AB8E9157B}</Project>
+      <Project>{0D9EE5B6-55F6-4462-857B-24556B5A70A3}</Project>
       <Name>BookSwap</Name>
     </ProjectReference>
   </ItemGroup>

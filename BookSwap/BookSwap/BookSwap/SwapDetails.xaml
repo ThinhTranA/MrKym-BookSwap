@@ -38,6 +38,7 @@
 
                 <BoxView
                     Grid.RowSpan="2"
+                    x:Name="BookBorderBoxView"
                     HeightRequest="218"
                     WidthRequest="153"
                     Opacity=".5"
@@ -59,11 +60,13 @@
 
                 <StackLayout Grid.Column="1" Margin="10,0,0,0">
                     <Label
+                        x:Name="FromTitleLabel"
                         Text="{Binding SwapFromBook.Title}"
                         TextColor="{Binding SwapFromBook.Colors.TitleColor}"
                         FontAttributes="Bold"
                         FontSize="18" />
                     <Label
+                        x:Name="FromAuthorLabel"
                         Text="{Binding SwapFromBook.Author}"
                         TextColor="{Binding SwapFromBook.Colors.TitleColor}"
                         FontSize="14" />
@@ -76,6 +79,7 @@
 
                     <pancake:PancakeView
                         Elevation="2"
+                        x:Name="DecscriptionBackground"
                         Opacity=".5"
                         HasShadow="True">
                         <BoxView Color="White" />

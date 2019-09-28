@@ -52,7 +52,9 @@
                 Margin="10"
                 HasShadow="True"
                 Elevation="10">
-                <Image Source="book_extremelyloud" />
+                <Image Source="{Binding SwapFromBook.CoverImage}"
+                       sharedTransitions:Transition.Name="FromCoverImage"
+                        sharedTransitions:Transition.Group="{Binding SelectedBook.Title}"/>
             </pancake:PancakeView>
             <StackLayout Grid.Column="1">
                 <Label
@@ -71,8 +73,6 @@
             <Image
                 Source="pencil"
                 Margin="0,20,20,0"
-                sharedTransitions:Transition.Name="FromCoverImage"
-                sharedTransitions:Transition.Group="{Binding SelectedBook.Title}"
                 Grid.Column="2"
                 VerticalOptions="Start" />
         </Grid>
